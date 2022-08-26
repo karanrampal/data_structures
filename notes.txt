@@ -48,3 +48,19 @@ Queue:
 2. Array implementation we need to keep track of 2 indexes the enqueue index and the dequeue index. and make the array circular i.e. wrap back to idx 0 if reached end.
 3. Array implementation has a max size limitation.
 4. Each queue operation is O(1) i.e. enqueue, dequeue, empty
+
+Tree:
+1. Contains nodes which contain key, list of child nodes
+2. Binary Tree each node has at max 2 nodes only. Contains nodes which contain key, left, right.
+3. Binary Search Tree (BST) each left node is less than parent and each right node is greater than parent.
+        5
+    4        7
+2        6        8
+    3
+
+Tree traversal:
+1. Depth first e.g. usually implemented using recursion or if done iteratively then use stack
+    a) in-order traversal (left, print, right). It is only for binary tree as for others it's not clear which is mid point. Sorted output.
+    b) pre-order traversal (print, left, right). Parent printed first then children.
+    c) post-order traversal (left, right, print). children printed first then parent. Like a stack.
+2. Breadth first usually implemented using a queue
