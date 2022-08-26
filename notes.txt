@@ -1,0 +1,40 @@
+Arrays:
+1. Constant time O(1) access to read, write.
+2. Row major indexing i.e. all elements of row 1 are followed by row 2 elements etc.
+3. Column major indexing i.e. all elements of Column 1 are followed by all elements of Column 2 etc.
+4. O(n) for add/remove elements in begining and middle. O(1) to add/remove at the end.
+5. Elements are contiguous
+
+Linked Lists:
+1. Elements need not be contiguous.
+
+
+Singly Linked Lists:
+1. Contains Nodes which contains a) key b) next pointer
+2. Possible Operations:
+    pushfront O(1)
+    topfront (return top item) O(1)
+    popfront (remove front item) O(1)
+    pushback O(n) if tail pointer exists then O(1)
+    topback O(n) if tail pointer exists then O(1)
+    popback O(n)
+    find O(n)
+    erase O(n)
+    empty O(1)
+    addafter O(1)
+    addbefore O(n)
+
+Double Linked Lists:
+1. Contains Nodes which contains a) key b) next pointer c) prev pointer
+2. Possible Operations:
+    pushfront O(1)
+    topfront (return top item) O(1)
+    popfront (remove front item) O(1)
+    pushback O(1)
+    topback O(1)
+    popback O(1)
+    find O(n)
+    erase O(n)
+    empty O(1)
+    addafter O(1)
+    addbefore O(1)
