@@ -8,7 +8,6 @@ Arrays:
 Linked Lists:
 1. Elements need not be contiguous.
 
-
 Singly Linked Lists:
 1. Contains Nodes which contains a) key b) next pointer
 2. Possible Operations:
@@ -30,11 +29,22 @@ Double Linked Lists:
     pushfront O(1)
     topfront (return top item) O(1)
     popfront (remove front item) O(1)
-    pushback O(1)
-    topback O(1)
+    pushback O(n) if tail pointer exists then O(1)
+    topback O(n) if tail pointer exists then O(1)
     popback O(1)
     find O(n)
     erase O(n)
     empty O(1)
     addafter O(1)
     addbefore O(1)
+
+Stacks:
+1. Array implementation has some overhead because of the size of the array used which can be unused. Also they have a maximum size limit.
+2. Linked list implementation has some fixed overhead because of storing pointers along with the values
+3. Each operation is O(1) i.e. push, pop, top, empty
+
+Queue:
+1. Linked list implementation with tail pointer.
+2. Array implementation we need to keep track of 2 indexes the enqueue index and the dequeue index. and make the array circular i.e. wrap back to idx 0 if reached end.
+3. Array implementation has a max size limitation.
+4. Each queue operation is O(1) i.e. enqueue, dequeue, empty
