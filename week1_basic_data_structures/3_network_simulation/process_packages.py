@@ -13,7 +13,18 @@ class Buffer:
 
     def process(self, request):
         # write your code here
-        return Response(False, -1)
+        start_time = self.finish_time[-1] if self.finish_time else 0
+
+        while self.finish_time and (self.finish_time[0] <= request.arrived_at):
+            self.finish_time.pop(0)
+
+        if len(self.finish_time) >= self.size:
+            return Response(True, -1)
+
+        if request.arrived_at > start_time:
+            start_time = request.arrived_at
+        self.finish_time.append(start_time + request.time_to_process)
+        return Response(False, start_time)
 
 
 def process_requests(requests, buffer):
