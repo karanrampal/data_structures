@@ -64,3 +64,8 @@ Tree traversal:
     b) pre-order traversal (print, left, right). Parent printed first then children.
     c) post-order traversal (left, right, print). children printed first then parent. Like a stack.
 2. Breadth first usually implemented using a queue
+
+Priority Queue:
+1. min-heap/max-heap are 2 types of priority queues. Min heap means value of parent is <= it's children.
+2. Creating a heap from list is O(n) amortized (Technically its O(nlogn) but the call to siftdown is such that there is only one node below to swap so it is fast)
+3. Insert in heap is O(logn), extractMin/Max is O(logn), getMin/Max is O(1)
