@@ -1,6 +1,5 @@
 # python3
-from signal import set_wakeup_fd
-from typing import List
+from typing import List, Tuple
 
 class BinaryMinHeap:
     def __init__(self):
@@ -26,14 +25,32 @@ class BinaryMinHeap:
     def sift_down(self, i: int) -> None:
         cur = i
         left = self.left_child(i)
-        if (left < len(self.heap)) and (self.heap[left] < self.heap[cur]):
+        if (left < self.size()) and (self.heap[left] < self.heap[cur]):
             cur = left
         right = self.right_child(i)
-        if (right < len(self.heap)) and (self.heap[right] < self.heap[cur]):
+        if (right < self.size()) and (self.heap[right] < self.heap[cur]):
             cur = right
         if cur != i:
             self.heap[cur], self.heap[i] = self.heap[i], self.heap[cur]
             self.sift_down(cur)
+
+    def sift_down_iterative(self, i: int) -> List[Tuple[int]]:
+        swaps = []
+        queue = [i]
+        while queue:
+            cur = i = queue.pop(0)
+            left = self.left_child(i)
+            if (left < self.size()) and (self.heap[left] < self.heap[cur]):
+                cur = left
+            right = self.right_child(i)
+            if (right < self.size()) and (self.heap[right] < self.heap[cur]):
+                cur = right
+            if cur != i:
+                self.heap[cur], self.heap[i] = self.heap[i], self.heap[cur]
+                swaps.append((i, cur))
+                queue.append(cur)
+
+        return swaps
 
     def insert(self, x: int) -> None:
         self.heap.append(x)
@@ -66,7 +83,14 @@ class BinaryMinHeap:
         self.heap = arr
         for i in range(self.size() // 2, -1, -1):
             self.sift_down(i)
+    
+    def find_swaps(self, arr: List[int]) -> List[Tuple[int]]:
+        self.heap = arr
+        swaps = []
+        for i in range(self.size() // 2, -1, -1):
+            swaps += self.sift_down_iterative(i)
 
+        return swaps
 
 def build_heap(data):
     """Build a heap from ``data`` inplace.
@@ -93,7 +117,9 @@ def main():
     data = list(map(int, input().split()))
     assert len(data) == n
 
-    swaps = build_heap(data)
+    #swaps = build_heap(data)
+    bmh = BinaryMinHeap()
+    swaps = bmh.find_swaps(data)
 
     print(len(swaps))
     for i, j in swaps:
