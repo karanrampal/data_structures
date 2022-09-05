@@ -74,3 +74,8 @@ Priority Queue:
 Partial sorting:
 1. From a larg array of n elements only find first k sorted elements.
 2. Create binary min heap O(n) and extractmin k elements O(klogn) then if k is n/logn so the total complexity is O(n)
+
+Union-find/Disjoint sets:
+1. Possible operations are MakeSet O(1), Union O(logn), find O(logn)
+2. With path compression all operations are O(1) or amortized O(log*n) which is nearly constant.
+3. iterated logarithm log*n is the no. of times log needs to be applied to n before we get <= 1
