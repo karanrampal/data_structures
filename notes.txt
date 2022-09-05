@@ -70,3 +70,7 @@ Priority Queue:
 2. Creating a heap from list is O(n) amortized (Technically its O(nlogn) but the call to siftdown is such that there is only one node below to swap so it is fast)
 3. Insert in heap is O(logn), extractMin/Max is O(logn), getMin/Max is O(1)
 4. We can use n-ary heap as well instead of binary heap, however the siftdown becomes O(d*log_base_d(n)) instead of O(logn) so not better than binary min/max heap.
+
+Partial sorting:
+1. From a larg array of n elements only find first k sorted elements.
+2. Create binary min heap O(n) and extractmin k elements O(klogn) then if k is n/logn so the total complexity is O(n)
