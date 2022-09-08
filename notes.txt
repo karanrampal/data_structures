@@ -79,3 +79,11 @@ Union-find/Disjoint sets:
 1. Possible operations are MakeSet O(1), Union O(logn), find O(logn)
 2. With path compression all operations are O(1) or amortized O(log*n) which is nearly constant.
 3. iterated logarithm log*n is the no. of times log needs to be applied to n before we get <= 1
+
+Hash tables (maps, dict, set):
+1. Converts objects (keys) in a set S to values in set V where |V| << |S|
+2. Since the cardinality of V is less than S there are collisions so we have to design the hash function such that the probability of collision is small.
+3. Can be implemented by an array of doubly linked lists.
+4. Memory complexity is O(m+n) where n are the total objects and m is the number of buckets.
+5. HasKey, Get, Set are all O(c+1) where c is the length of the longest chain.
+7. We want to make c and m as small as possible to get fast operations, so better hash functions are needed.
