@@ -42,6 +42,21 @@ def process_queries(queries):
             result.append(response)
     return result
 
+
+def process_queries_fast(queries):
+    result = []
+    contacts = {}
+    for cur_query in queries:
+        if cur_query.type == 'add':
+            contacts[cur_query.number] = cur_query.name
+        elif cur_query.type == 'del':
+            contacts.pop(cur_query.number, None)
+        else:
+            val = contacts.get(cur_query.number, None)
+            response = val if val else "not found"
+            result.append(response)
+    return result
+
 if __name__ == '__main__':
-    write_responses(process_queries(read_queries()))
+    write_responses(process_queries_fast(read_queries()))
 
