@@ -1,4 +1,5 @@
 # python3
+from collections import deque
 
 class Query:
 
@@ -17,7 +18,8 @@ class QueryProcessor:
     def __init__(self, bucket_count):
         self.bucket_count = bucket_count
         # store all strings in one list
-        self.elems = []
+        #self.elems = []
+        self.elems = [deque() for _ in range(bucket_count)]
 
     def _hash_func(self, s):
         ans = 0
@@ -52,11 +54,27 @@ class QueryProcessor:
             else:
                 if ind != -1:
                     self.elems.pop(ind)
+    
+    def process_query_fast(self, query):
+        if query.type == "check":
+            self.write_chain(self.elems[query.ind])
+        else:
+            hash = self._hash_func(query.s)
+            val = query.s in self.elems[hash]
+            if query.type == 'find':
+                self.write_search_result(val)
+            elif query.type == 'add':
+                if not val:
+                    self.elems[hash].appendleft(query.s)
+            else:
+                if val:
+                    self.elems[hash].remove(query.s)
+
 
     def process_queries(self):
         n = int(input())
         for i in range(n):
-            self.process_query(self.read_query())
+            self.process_query_fast(self.read_query())
 
 if __name__ == '__main__':
     bucket_count = int(input())
