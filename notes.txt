@@ -87,3 +87,17 @@ Hash tables (maps, dict, set):
 4. Memory complexity is O(m+n) where n are the total objects and m is the number of buckets.
 5. HasKey, Get, Set are all O(c+1) where c is the length of the longest chain.
 7. We want to make c and m as small as possible to get fast operations, so better hash functions are needed.
+
+Binary Search Tree:
+1. Useful for local search. BST will have a root node and each node stores key, pointer to left child, right child and parent.
+2. parent is larger than it's left descendants and smaller than right descendants.
+3. We want the left and right sub tree to be balanced so that searching for anything is approx equal for all nodes.
+4. AVL trees are an implementation of BST's that help in maintaining tree balance
+5. Operations that can be done,
+    RangeSearch O(logn)
+    NearestNeighbour O(logn)
+    Insert O(logn)
+    remove O(logn)
+    find O(logn)
+    next O(logn)
+    balance O(logn)
