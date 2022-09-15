@@ -101,3 +101,6 @@ Binary Search Tree:
     find O(logn)
     next O(logn)
     balance O(logn)
+    split O(logn)
+    merge O(logn)
+
