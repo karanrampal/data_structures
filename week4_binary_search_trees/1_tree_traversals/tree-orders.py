@@ -15,11 +15,33 @@ class TreeOrders:
       self.key[i] = a
       self.left[i] = b
       self.right[i] = c
+  
+  def _inOrder(self, node: int) -> int:
+    if node == -1:
+      return
+    self._inOrder(self.left[node])
+    self.result.append(self.key[node])
+    self._inOrder(self.right[node])
+
+  def _preOrder(self, node: int) -> int:
+    if node == -1:
+      return
+    self.result.append(self.key[node])
+    self._preOrder(self.left[node])
+    self._preOrder(self.right[node])
+
+  def _postOrder(self, node: int) -> int:
+    if node == -1:
+      return
+    self._postOrder(self.left[node])
+    self._postOrder(self.right[node])
+    self.result.append(self.key[node])
 
   def inOrder(self):
     self.result = []
     # Finish the implementation
     # You may need to add a new recursive method to do that
+    self._inOrder(0)
                 
     return self.result
 
@@ -27,6 +49,7 @@ class TreeOrders:
     self.result = []
     # Finish the implementation
     # You may need to add a new recursive method to do that
+    self._preOrder(0)
                 
     return self.result
 
@@ -34,6 +57,7 @@ class TreeOrders:
     self.result = []
     # Finish the implementation
     # You may need to add a new recursive method to do that
+    self._postOrder(0)
                 
     return self.result
 
